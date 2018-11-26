@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('Promote') {
                 when {
-                    expression { env.BRANCH_NAME == 'master }   
+                    expression { env.BRANCH_NAME == 'master' }   
                 }
                 steps {
                     sh 'echo Promoted'
