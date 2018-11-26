@@ -28,6 +28,5 @@ public class App
           System.exit(1);
         }
         System.out.println("Done!");
-        echo "Silly updates";
     }
 }
