@@ -17,11 +17,12 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+if (env.BRANCHNAME == 'master') {
         stage ('Promote') {
-            if(env.BRANCH_NAME == 'master') {
                 steps {
                     sh 'echo Promoted'
                 }
-            }
+        }
+}
     }
 }
