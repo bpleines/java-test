@@ -27,5 +27,6 @@ public class App
           parser.handleError(e);
           System.exit(1);
         }
+        echo "done!"
     }
 }
