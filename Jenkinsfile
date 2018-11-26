@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'jenkinsci/blueocean' }
     stages {
         stage ('Initialize') {
             steps {
