@@ -28,7 +28,7 @@ pipeline {
     }
     post {  
          failure { 
-             sh 'echo "The build failed"' 
+             sh 'echo The build failed' 
          }
     } 
 }
