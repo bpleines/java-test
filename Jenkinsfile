@@ -3,19 +3,6 @@ pipeline {
         docker { image 'maven:3-alpine' }
     }
     stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }
-        }
-        stage ('Build Root') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
         stage ('Build Submodule') {
             steps {
                 sh 'cd bpleines-app ; mvn clean install'
