@@ -12,9 +12,14 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage ('Build Root Project') {
             steps {
                 sh 'mvn clean install'
+            }
+        }
+        stage ('Build Submodule Project') {
+            steps {
+                sh 'cd bpleines-app ; mvn clean install'
             }
         }
         stage ('Promote') {

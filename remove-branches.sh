@@ -1,7 +1,7 @@
 #!/bin/bash
-for feature in 5 6 7 8 9
+for feature in 1 2 3 4 5
 do
     echo $feature
-    git checkout -d feature$feature
-    git push -u --delete feature$feature
+    git branch -d feature$feature
+    git push origin --delete feature$feature
 done
