@@ -28,6 +28,6 @@ public class App
           System.exit(1);
         }
         System.out.println("Done!");
-        System.out.println("Silly updates");
+        echo "Silly updates";
     }
 }
