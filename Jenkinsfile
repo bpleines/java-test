@@ -46,22 +46,16 @@ if (project == 'pipeline2') {
 pipeline {
     node {
         stage ('Pipeline1: Build Submodule') {
-            steps {
                 cd bpleines-app ; mvn clean install
-            }
         }
         stage ('Pipeline1: Build Submodule 2') {
-            steps {
                 cd test-app2 ; mvn clean install
-            }
         }
         stage ('Pipeline1: Promote') {
                 when {
                     expression { env.BRANCH_NAME == 'master' }
                 }
-                steps {
                     echo Promoted
-                }
         }
     }
     post {
