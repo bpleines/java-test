@@ -26,7 +26,7 @@ pipeline {
         }
         stage ('Pipeline1: Promote') {
                 if ( env.BRANCH_NAME == 'master' ) {   
-                     println Promoted
+                     //
                 }
         }
     }
@@ -44,7 +44,7 @@ pipeline {
         }
         stage ('Pipeline2: Promote') {
                 if (env.BRANCH_NAME == 'master') {
-                    println Promoted
+                    //
                 }
         }
     }
