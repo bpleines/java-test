@@ -37,7 +37,7 @@ pipeline {
              echo The pipeline failed something
          }
          success {
-             echo The pipeline succeeded!
+             echo The pipeline succeeded
          }
     } 
 }
@@ -70,7 +70,7 @@ pipeline {
              echo The pipeline failed something
          }
          success {
-             echo The pipeline succeeded!
+             echo The pipeline succeeded
          }
     }
 }
