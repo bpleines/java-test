@@ -39,6 +39,7 @@ pipeline {
          }
     } 
 }
+}
 
 if (project == 'pipeline2') {
 pipeline {
