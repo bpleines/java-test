@@ -26,7 +26,7 @@ pipeline {
         }
         stage ('Pipeline1: Promote') {
                 if ( env.BRANCH_NAME == 'master' ) {   
-                     'echo Promoted'
+                     println Promoted
                 }
         }
     }
@@ -36,15 +36,15 @@ pipeline {
 if (project == 'pipeline2') {
 pipeline {
     node {
-        stage ('Pipeline1: Build Submodule') {
+        stage ('Pipeline2: Build Submodule') {
                 'cd bpleines-app ; mvn clean install'
         }
-        stage ('Pipeline1: Build Submodule 2') {
+        stage ('Pipeline2: Build Submodule 2') {
                 'cd test-app2 ; mvn clean install'
         }
-        stage ('Pipeline1: Promote') {
+        stage ('Pipeline2: Promote') {
                 if (env.BRANCH_NAME == 'master') {
-                    'echo Promoted'
+                    println Promoted
                 }
         }
     }
