@@ -7,7 +7,7 @@ switch(env.JOB_NAME.split("/")[0])
   case 'Pipeline2':
     project = 'pipeline2'
     break
-  default
+  default:
     project = ''
     break
 }
