@@ -30,15 +30,7 @@ pipeline {
                 }
         }
     }
-    post {  
-         failure { 
-             'echo The pipeline failed something'
-         }
-         success {
-             'echo The pipeline succeeded'
-         }
-    } 
-}
+} 
 }
 
 if (project == 'pipeline2') {
@@ -55,14 +47,6 @@ pipeline {
                     'echo Promoted'
                 }
         }
-    }
-    post {
-         failure {
-             'echo The pipeline failed something'
-         }
-         success {
-             'echo The pipeline succeeded'
-         }
     }
 }
 }
