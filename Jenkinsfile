@@ -25,9 +25,7 @@ pipeline {
                 'cd test-app2 ; mvn clean install'
         }
         stage ('Pipeline1: Promote') {
-                when {
-                    expression { env.BRANCH_NAME == 'master' }   
-                }
+                if ( env.BRANCH_NAME == 'master' ) {   
                      'echo Promoted'
                 }
         }
@@ -52,10 +50,9 @@ pipeline {
                 'cd test-app2 ; mvn clean install'
         }
         stage ('Pipeline1: Promote') {
-                when {
-                    expression { env.BRANCH_NAME == 'master' }
-                }
+                if (env.BRANCH_NAME == 'master') {
                     'echo Promoted'
+                }
         }
     }
     post {
