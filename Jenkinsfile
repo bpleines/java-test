@@ -17,9 +17,6 @@ result
 
 if (project == 'pipeline1') {
 pipeline {
-    agent {
-        docker { image 'maven:3-alpine' }
-    }
     node {
         stage ('Pipeline1: Build Submodule') {
             steps {
@@ -53,9 +50,6 @@ pipeline {
 
 if (project == 'pipeline2') {
 pipeline {
-    agent {
-        docker { image 'maven:3-alpine' }
-    }
     node {
         stage ('Pipeline1: Build Submodule') {
             steps {
