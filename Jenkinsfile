@@ -1,8 +1,8 @@
 #!/usr/bin/env groovy
 println env.JOB_NAME
 println env.JOB_NAME.split("/")[0]
-switch(env.JOB_NAME.split("/")[0])
-{
+def result
+switch(env.JOB_NAME.split("/")[0]) {
   case 'Pipeline1':
     project = 'pipeline1'
     break
@@ -13,6 +13,7 @@ switch(env.JOB_NAME.split("/")[0])
     project = ''
     break
 }
+result
 
 if (project == 'pipeline1') {
 pipeline {
