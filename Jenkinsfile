@@ -19,25 +19,25 @@ if (project == 'pipeline1') {
 pipeline {
     node {
         stage ('Pipeline1: Build Submodule') {
-                cd bpleines-app ; mvn clean install
+                'cd bpleines-app ; mvn clean install'
         }
         stage ('Pipeline1: Build Submodule 2') {
-                cd test-app2 ; mvn clean install
+                'cd test-app2 ; mvn clean install'
         }
         stage ('Pipeline1: Promote') {
                 when {
                     expression { env.BRANCH_NAME == 'master' }   
                 }
-                     echo Promoted
+                     'echo Promoted'
                 }
         }
     }
     post {  
          failure { 
-             echo The pipeline failed something
+             'echo The pipeline failed something'
          }
          success {
-             echo The pipeline succeeded
+             'echo The pipeline succeeded'
          }
     } 
 }
@@ -46,24 +46,24 @@ if (project == 'pipeline2') {
 pipeline {
     node {
         stage ('Pipeline1: Build Submodule') {
-                cd bpleines-app ; mvn clean install
+                'cd bpleines-app ; mvn clean install'
         }
         stage ('Pipeline1: Build Submodule 2') {
-                cd test-app2 ; mvn clean install
+                'cd test-app2 ; mvn clean install'
         }
         stage ('Pipeline1: Promote') {
                 when {
                     expression { env.BRANCH_NAME == 'master' }
                 }
-                    echo Promoted
+                    'echo Promoted'
         }
     }
     post {
          failure {
-             echo The pipeline failed something
+             'echo The pipeline failed something'
          }
          success {
-             echo The pipeline succeeded
+             'echo The pipeline succeeded'
          }
     }
 }
