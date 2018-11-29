@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 println env.JOB_NAME
+println env.JOB_NAME.split("/")[0]
 switch(env.JOB_NAME.split("/")[0])
 {
   case 'Pipeline1':
@@ -18,7 +19,7 @@ pipeline {
     agent {
         docker { image 'maven:3-alpine' }
     }
-    stages {
+    node {
         stage ('Pipeline1: Build Submodule') {
             steps {
                 sh 'cd bpleines-app ; mvn clean install'
@@ -54,7 +55,7 @@ pipeline {
     agent {
         docker { image 'maven:3-alpine' }
     }
-    stages {
+    node {
         stage ('Pipeline1: Build Submodule') {
             steps {
                 sh 'cd bpleines-app ; mvn clean install'
