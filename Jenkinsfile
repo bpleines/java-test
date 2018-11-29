@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+println env.JOB_NAME
 switch(env.JOB_NAME.split("/")[0])
 {
   case 'Pipeline1':
