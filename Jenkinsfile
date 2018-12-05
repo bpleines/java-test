@@ -7,7 +7,9 @@ node {
     stage ('Get Changed Files') {
       def workspace = pwd()
       sh "echo ${workspace}"
-      sh './detect_branch_changes.sh'
+      dir (workspace) {
+          sh './detect_branch_changes.sh'
+      }
       sh "echo ${commitChangeset}"
     }
     stage ('Build Submodule') {
