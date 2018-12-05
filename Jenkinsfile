@@ -21,8 +21,8 @@ if (project == 'pipeline1') {
 pipeline {
     node {
         stage ('Get changeset') {
-          commitChangeset = sh(returnStdout: true, script: 'git checkout master ; git diff --name-only ${env.BRANCH_NAME}').trim()
-          sh 'echo ${commitChangeset}'
+          commitChangeset = sh(returnStdout: true, script: "git checkout master ; git diff --name-only ${env.BRANCH_NAME}").trim()
+          sh "echo ${commitChangeset}"
         }
         stage ('Pipeline1: Build Submodule 2') {
                 sh 'cd test-app2 ; mvn clean install'
