@@ -5,9 +5,8 @@ println env.BRANCH_NAME;
 
 node {
     stage ('Get Changed Files') {
-      commitChangeset = sh(returnStdout: true, script: "./detect_branch_changes.sh")
+      sh './detect_branch_changes.sh'
       sh "echo ${commitChangeset}"
-    }
     stage ('Build Submodule') {
             sh 'cd test-app2'
     }
