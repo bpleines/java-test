@@ -22,7 +22,7 @@ pipeline {
     node {
         stage ('Get changeset') {
           commitChangeset = sh(returnStdout: true, script: 'git diff-tree --name-only HEAD').trim()
-          sh 'echo commitChangeset'
+          echo commitChangeset
         }
         stage ('Pipeline1: Build Submodule 2') {
                 sh 'cd test-app2 ; mvn clean install'
