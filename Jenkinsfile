@@ -5,6 +5,7 @@ println env.BRANCH_NAME;
 
 node {
     stage ('Get Changed Files') {
+      sh "cd /tmp"
       checkout scm
       sh "./detect_branch_changes.sh ${env.BRANCH_NAME}"
       sh "echo ${commitChangeset}"
