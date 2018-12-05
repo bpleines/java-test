@@ -24,7 +24,11 @@ pipeline {
     node {
         stage ('Get changeset') {
           checkout scm
-          commitChangeset = sh(returnStdout: true, script: "git checkout master ; git checkout ${env.BRANCH_NAME} ; git diff --name-only master").trim()
+          sh "git checkout master"
+          sh "git checkout ${env.BRANCH_NAME}"
+          commitChangeset = sh(
+              returnStdout: true,
+              script: "git diff --name-only master").trim()
           sh "echo ${commitChangeset}"
         }
         stage ('Pipeline1: Build Submodule 2') {
