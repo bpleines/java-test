@@ -7,6 +7,7 @@ node {
     stage ('Get Changed Files') {
       sh './detect_branch_changes.sh'
       sh "echo ${commitChangeset}"
+    }
     stage ('Build Submodule') {
             sh 'cd test-app2'
     }
