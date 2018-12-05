@@ -1,10 +1,9 @@
 #!/usr/bin/env groovy
 println env.JOB_NAME;
 println env.JOB_NAME.split("/")[0];
-println env.BRANCH_NAME;
 String branchName = env.BRANCH_NAME;
 println env.BRANCH_NAME
-commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
+commitChangeset = sh(returnStdout: true, script: 'git diff-tree --name-only HEAD').trim()
 def result
 switch(env.JOB_NAME.split("/")[0]) {
   case 'Pipeline1':
@@ -22,8 +21,8 @@ result
 if (project == 'pipeline1') {
 pipeline {
     node {
-        stage ('Pipeline1: Build Submodule') {
-                sh 'cd bpleines-app ; mvn clean install'
+        stage ('Get changeset') {
+          commitChangeset = sh(returnStdout: true, script: 'git diff-tree --name-only HEAD').trim()
         }
         stage ('Pipeline1: Build Submodule 2') {
                 sh 'cd test-app2 ; mvn clean install'
