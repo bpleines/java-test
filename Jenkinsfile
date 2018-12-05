@@ -1,6 +1,10 @@
 #!/usr/bin/env groovy
 println env.JOB_NAME
 println env.JOB_NAME.split("/")[0]
+println env.BRANCH_NAME
+String branchName = env.BRANCH_NAME
+println env.BRANCH_NAME
+["git", 
 def result
 switch(env.JOB_NAME.split("/")[0]) {
   case 'Pipeline1':
