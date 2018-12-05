@@ -6,9 +6,7 @@ println env.BRANCH_NAME;
 node {
     stage ('Get Changed Files') {
       checkout scm
-      dir (workspace) {
-          sh "./detect_branch_changes.sh ${env.BRANCH_NAME}" 
-      }
+      sh "./detect_branch_changes.sh ${env.BRANCH_NAME}"
       sh "echo ${commitChangeset}"
     }
     stage ('Build Submodule') {
