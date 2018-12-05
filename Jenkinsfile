@@ -1,34 +1,55 @@
-pipeline {
-    agent {
-        docker { image 'maven:3-alpine' }
-    }
-    stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }
-        }
+#!/usr/bin/env groovy
+println env.JOB_NAME;
+println env.JOB_NAME.split("/")[0];
+String branchName = env.BRANCH_NAME;
+println env.BRANCH_NAME
+def result
+switch(env.JOB_NAME.split("/")[0]) {
+  case 'Pipeline1':
+    project = 'pipeline1'
+    break
+  case 'Pipeline2':
+    project = 'pipeline2'
+    break
+  default:
+    project = ''
+    break
+}
+result
 
-        stage ('Build') {
-            steps {
-                sh 'mvn clean install'
-            }
+if (project == 'pipeline1') {
+pipeline {
+    node {
+        stage ('Get changeset') {
+          commitChangeset = sh(returnStdout: true, script: 'git diff --name-only master').trim()
+          echo commitChangeset
         }
-        stage ('Promote') {
-                when {
-                    expression { env.BRANCH_NAME == 'master' }   
-                }
-                steps {
-                    sh 'echo Promoted'
+        stage ('Pipeline1: Build Submodule 2') {
+                sh 'cd test-app2 ; mvn clean install'
+        }
+        stage ('Pipeline1: Promote') {
+                if ( env.BRANCH_NAME == 'master' ) {   
+                     //
                 }
         }
     }
-    post {  
-         failure { 
-             sh 'echo The build failed' 
-         }
-    } 
+} 
+}
+
+if (project == 'pipeline2') {
+pipeline {
+    node {
+        stage ('Pipeline2: Build Submodule') {
+                sh 'cd bpleines-app ; mvn clean install'
+        }
+        stage ('Pipeline2: Build Submodule 2') {
+                sh 'cd test-app2 ; mvn clean install'
+        }
+        stage ('Pipeline2: Promote') {
+                if (env.BRANCH_NAME == 'master') {
+                    //
+                }
+        }
+    }
+}
 }
