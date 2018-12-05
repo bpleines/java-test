@@ -24,7 +24,9 @@ pipeline {
           checkout scm
           sh "git checkout master"
           sh "git checkout ${env.BRANCH_NAME}"
-          commitChangeset = sh(returnStdout: true, script: "git diff --name-only master").trim()
+          commitChangeset = sh(
+              returnStdout: true,
+              script: "git diff --name-only master").trim()
           sh "echo ${commitChangeset}"
         }
         stage ('Pipeline1: Build Submodule 2') {
