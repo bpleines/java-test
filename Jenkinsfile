@@ -8,7 +8,7 @@ node {
       def workspace = pwd()
       sh "echo ${workspace}"
       dir (workspace) {
-          sh './detect_branch_changes.sh'
+          sh 'detect_branch_changes.sh'
       }
       sh "echo ${commitChangeset}"
     }
