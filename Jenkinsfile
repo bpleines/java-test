@@ -9,7 +9,7 @@ node {
       sh "echo ${commitChangeset}"
     }
     stage ('Pipeline1: Build Submodule 2') {
-            sh 'cd test-app2 ; mvn clean install'
+            sh 'cd test-app2'
     }
     if ( env.BRANCH_NAME == 'master' ) {
         stage ('Pipeline1: Promote') {
