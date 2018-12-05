@@ -21,7 +21,7 @@ if (project == 'pipeline1') {
 pipeline {
     node {
         stage ('Get changeset') {
-          commitChangeset = sh(returnStdout: true, script: 'git diff-tree --name-only HEAD').trim()
+          commitChangeset = sh(returnStdout: true, script: 'git diff --name-only master').trim()
           echo commitChangeset
         }
         stage ('Pipeline1: Build Submodule 2') {
