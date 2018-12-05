@@ -4,7 +4,7 @@ println env.JOB_NAME.split("/")[0];
 println env.BRANCH_NAME;
 String branchName = env.BRANCH_NAME;
 println env.BRANCH_NAME
-["git", "checkout", branchName].execute()
+commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
 def result
 switch(env.JOB_NAME.split("/")[0]) {
   case 'Pipeline1':
