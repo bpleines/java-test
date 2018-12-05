@@ -4,8 +4,7 @@ println env.JOB_NAME.split("/")[0];
 println env.BRANCH_NAME;
 
 node {
-     docker { image 'ubuntu:16.04' }
-     }
+    docker { image 'ubuntu:16.04' }
     stage ('Get Changed Files') {
       checkout scm
       def workspace = pwd()
