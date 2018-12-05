@@ -21,6 +21,7 @@ if (project == 'pipeline1') {
 pipeline {
     node {
         stage ('Get changeset') {
+          checkout scm
           commitChangeset = sh(returnStdout: true, script: "git checkout master ; git checkout ${env.BRANCH_NAME} ; git diff --name-only master").trim()
           sh "echo ${commitChangeset}"
         }
