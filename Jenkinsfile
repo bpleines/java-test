@@ -23,7 +23,7 @@ pipeline {
         stage ('Get changeset') {
           checkout scm
           sh "git checkout master"
-          sh "git checkout test1"
+          sh "git checkout ${env.BRANCH_NAME}"
           commitChangeset = sh(returnStdout: true, script: "git diff --name-only master").trim()
           sh "echo ${commitChangeset}"
         }
