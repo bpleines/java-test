@@ -8,7 +8,7 @@ node {
       checkout scm
       def workspace = pwd()
       sh "echo ${workspace}"
-      sh "./detect_branch_changes.sh ${env.BRANCH_NAME}"
+      sh "cd /Users/bpleines/Engagements/Onera/java-test ; ./detect_branch_changes.sh ${env.BRANCH_NAME}"
       sh "echo ${commitChangeset}"
     }
     stage ('Build Submodule') {
