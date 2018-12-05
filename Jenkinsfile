@@ -3,12 +3,12 @@ println env.JOB_NAME;
 println env.JOB_NAME.split("/")[0];
 println env.BRANCH_NAME;
 
-node {
+node (ubuntu:16.04) {
     stage ('Get Changed Files') {
       checkout scm
       def workspace = pwd()
       sh "echo ${workspace}"
-      sh "cd /Users/bpleines/Engagements/Onera/java-test ; ./detect_branch_changes.sh ${env.BRANCH_NAME}"
+      sh "./detect_branch_changes.sh ${env.BRANCH_NAME}"
       sh "echo ${commitChangeset}"
     }
     stage ('Build Submodule') {
